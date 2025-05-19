@@ -1,0 +1,277 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Choose Your Doctor - Hypertension</title>
+  <link rel="stylesheet" href="EatWelll.css">
+  <link rel="shortcut icon" href="photos/logo.jpeg.jpg">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background-color: #1c9c52;
+      margin: 0;
+    }
+    .doctor-profile {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 800px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .doctor-info {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .doctor-info img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #2ecc71;
+    }
+    .doctor-info h2,
+    .doctor-info label {
+      margin-top: 1rem;
+      font-size: 1.5rem;
+      color: #2c3e50;
+    }
+    .doctor-info select {
+      padding: 0.5rem;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .doctor-info p {
+      margin: 0.3rem;
+      font-size: 1rem;
+    }
+    .chat-box {
+      margin-top: 2rem;
+      background: #f9f9f9;
+      padding: 1rem;
+      border-radius: 10px;
+    }
+    .chat-box h3 {
+      margin-bottom: 1rem;
+    }
+    .chat-messages {
+      height: 200px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      background: #fff;
+      border-radius: 5px;
+    }
+    .chat-input {
+      display: flex;
+      gap: 1rem;
+    }
+    .chat-input input {
+      flex: 1;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .chat-input button {
+      padding: 0.5rem 1rem;
+      background: #2ecc71;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .chat-input button:hover {
+      background: #27ae60;
+    }
+
+    /* Rating Styles */
+    .doctor-rating {
+      margin-top: 2rem;
+      text-align: center;
+      background: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+    }
+    .stars {
+      font-size: 2rem;
+      color: #ccc;
+      cursor: pointer;
+      user-select: none;
+      margin: 0.5rem 0;
+    }
+    .stars .star:hover,
+    .stars .star.active {
+      color: gold;
+    }
+    #ratingMessage {
+      margin-top: 0.5rem;
+      color: #2ecc71;
+      font-weight: bold;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 2rem;
+      background-color: #2ecc71;
+      color: #fff;
+      padding: 0.6rem 1.2rem;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .back-btn:hover {
+      background-color: #27ae60;
+    }
+
+    .home-logo {
+      position: absolute;
+      top: 10px;
+      left: 20px;
+    }
+    .home-logo img {
+      height: 100px;
+      width: auto;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="home-logo">
+    <img src="photos/logoB.jpeg.jpg" alt="EatWell Logo">
+  </a>
+
+  <section>
+    <h1 style="text-align:left; color:#2c3e50; margin-bottom:2rem;">Our Hypertension Specialists</h1>
+    <div class="doctor-profile">
+
+      <!-- Doctor Selector -->
+      <div class="doctor-info">
+        <label for="doctorSelect"><strong>Chat with:</strong></label><br>
+        <select id="doctorSelect" onchange="updateDoctorInfo()">
+          <option value="monahassan">Dr. Mona Hassan</option>
+          <option value="kareemyoussef">Dr. Kareem Youssef</option>
+          <option value="raniasalem">Dr. Rania Salem</option>
+        </select>
+      </div>
+
+      <!-- Doctor Details -->
+      <div id="doctorDetails" class="doctor-info">
+        <img id="doctorImage" alt="Dr. Mona Hassan" src="photos/Dr. Mona Hassan.jpeg.jpg">
+        <h2 id="doctorName">Dr. Mona Hassan</h2>
+        <p><strong>Specialty:</strong> Cardiologist & Lifestyle Coach</p>
+        <p><strong>Email:</strong> <a href="mailto:mona.hassan@eatwell.com" id="doctorEmail">mona.hassan@eatwell.com</a></p>
+        <p><strong>Phone:</strong> <span id="doctorPhone">+20 100 852 6650</span></p>
+      </div>
+
+      <!-- Chat Box -->
+      <div id="chatBox" class="chat-box">
+        <h3 id="chatTitle">Chat with Dr. Mona Hassan</h3>
+        <div class="chat-messages" id="chatMessages">
+          <p><strong>Dr. Mona:</strong> Hello! How can I assist you today?</p>
+        </div>
+        <div class="chat-input">
+          <input type="text" id="userMessage" placeholder="Type your message...">
+          <button onclick="sendMessage()">Send</button>
+        </div>
+      </div>
+
+      <!-- Rating Section -->
+      <div id="doctorRating" class="doctor-rating">
+        <h3>Rate <span id="ratingDoctorName">Dr. Mona Hassan</span></h3>
+        <div class="stars" id="starContainer">
+          <span class="star" onclick="rateDoctor(1)">★</span>
+          <span class="star" onclick="rateDoctor(2)">★</span>
+          <span class="star" onclick="rateDoctor(3)">★</span>
+          <span class="star" onclick="rateDoctor(4)">★</span>
+          <span class="star" onclick="rateDoctor(5)">★</span>
+        </div>
+        <p id="ratingMessage"></p>
+      </div>
+
+      <a href="hypertension.html" class="back-btn">← Return Back</a>
+    </div>
+  </section>
+
+  <script>
+    let currentDoctorKey = "monahassan";
+
+    function updateDoctorInfo() {
+      const selected = document.getElementById("doctorSelect").value;
+      currentDoctorKey = selected;
+
+      const doctorInfo = {
+        monahassan: {
+          name: "Dr. Mona Hassan",
+          specialty: "Cardiologist & Lifestyle Coach",
+          email: "mona.hassan@eatwell.com",
+          phone: "+20 100 852 6650",
+          image: "photos/Dr. Mona Hassan.jpeg.jpg",
+          chat: "Hello! How can I assist you today?"
+        },
+        kareemyoussef: {
+          name: "Dr. Kareem Youssef",
+          specialty: "Nutrition Consultant",
+          email: "kareem.youssef@eatwell.com",
+          phone: "+20 121 534 6643",
+          image: "photos/Dr. Kareem Youssef.jpeg.jpg",
+          chat: "Hello! How can I assist you today?"
+        },
+        raniasalem: {
+          name: "Dr. Rania Salem",
+          specialty: "Holistic Wellness Expert",
+          email: "rania.salem@eatwell.com",
+          phone: "+20 111 563 4578",
+          image: "photos/Dr. Rania Salem.jpeg.jpg",
+          chat: "Hello! How can I assist you today?"
+        }
+      };
+
+      const d = doctorInfo[selected];
+      document.getElementById("doctorName").textContent = d.name;
+      document.getElementById("doctorEmail").textContent = d.email;
+      document.getElementById("doctorEmail").href = "mailto:" + d.email;
+      document.getElementById("doctorPhone").textContent = d.phone;
+      document.getElementById("doctorImage").src = d.image;
+      document.getElementById("chatMessages").innerHTML = `<p><strong>${d.name}:</strong> ${d.chat}</p>`;
+      document.getElementById("chatTitle").textContent = "Chat with " + d.name;
+      document.getElementById("ratingDoctorName").textContent = d.name;
+      clearStars();
+      document.getElementById("ratingMessage").textContent = "";
+    }
+
+    function sendMessage() {
+      const msg = document.getElementById("userMessage").value.trim();
+      if (!msg) return;
+      const chat = document.getElementById("chatMessages");
+      const p = document.createElement("p");
+      p.innerHTML = `<strong>You:</strong> ${msg}`;
+      chat.appendChild(p);
+      chat.scrollTop = chat.scrollHeight;
+      document.getElementById("userMessage").value = "";
+    }
+
+    function rateDoctor(n) {
+      document.querySelectorAll("#starContainer .star").forEach((star, i) => {
+        star.classList.toggle("active", i < n);
+      });
+      const name = document.getElementById("ratingDoctorName").textContent;
+      document.getElementById("ratingMessage").textContent =
+        `Thank you for rating ${name} ${n} star${n>1?'s':''}!`;
+    }
+
+    function clearStars() {
+      document.querySelectorAll("#starContainer .star").forEach(star => {
+        star.classList.remove("active");
+      });
+    }
+
+    window.onload = updateDoctorInfo;
+  </script>
+</body>
+</html>

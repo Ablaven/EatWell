@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EatWell Achievements</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="EatWelll.css">
+    <link rel="shortcut icon" href="photos/logo.jpeg.jpg">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            background-color: #1c9c52;
+        }
+
+        .achievements-header {
+            background-color: #2ecc71;
+            color: white;
+            padding: 0.1rem 0rem;
+            text-align: center;
+        }
+
+        .achievements-header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.rem;
+        }
+
+        .achievements-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: auto;
+            margin-top: 17px
+        }
+
+        .achievement-card {
+            background: #f5f3f0;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+.achievement-card img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+        .achievement-content {
+            padding: 1.5rem;
+        }
+
+        .achievement-content h2 {
+            color: #1c9c52;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-content p {
+            color: #555;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .achievement-details {
+            margin-top: 1rem;
+            background-color: #f0fdf4;
+            padding: 1rem;
+            border-left: 4px solid #1c9c52;
+            border-radius: 8px;
+        }
+
+        .achievement-details p {
+            margin: 0.3rem 0;
+            color: #333;
+        }
+
+        footer {
+            margin-top: 3rem;
+            background-color: #2ecc71;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        
+        .home-logo {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    display: inline-block;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+    cursor: pointer;
+}
+
+.team-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+        
+        .team-title-wrapper {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+
+    </style>
+</head>
+<body>
+
+<header class="achievements-header">
+    <a href="index.html" class="home-logo" style="left: 20px; top: 10px; width: 93px; height: 72px">
+        <img alt="" src="photos/logoH.jpeg.jpg" width="89" height="80">
+    </a>
+    <div class="header-text">
+        <h1>Real Stories, Real Success</h1>
+    </div>
+</header>
+
+    <section class="achievements-container">
+<div class="team-title-wrapper">
+    <h2 class="team-title">See how EatWell is transforming lives through personalized nutrition</h2>
+</div>
+
+        <!-- Mariam's Story -->
+        <div class="achievement-card">
+            <img alt="" src="photos/Mariam.jpeg.jpg" width="661" height="7">
+            <div class="achievement-content">
+                <h2>Mariam’s Transformation – From Tired to Thriving</h2>
+                <p>“Before EatWell, I was always tired and struggled with my weight. I didn’t know what meals were right for me. But after using the personalized meal plans and consulting with a nutritionist, everything changed. I lost 12 kg in 3 months, and I feel full of energy. I’m more confident, focused, and finally in control of my health.”</p>
+                <div class="achievement-details">
+                    <p><strong>Name:</strong> Mariam Gamal, 28</p>
+                    <p><strong>Goal:</strong> Weight Loss & Energy Boost</p>
+                    <p><strong>Result:</strong> Lost 12 kg, better sleep, improved energy levels</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ahmed's Story -->
+        <div class="achievement-card">
+            <img alt="" src="photos/Ahmed.jpeg.jpg" width="497" height="984">
+            <div class="achievement-content">
+                <h2>Ahmed’s Journey – Building Muscle, Building Confidence</h2>
+                <p>“As a beginner in the gym, I had no idea what to eat to build muscle. EatWell made it so simple. The meals were tailored to my fitness goals, and I could pick them up after my workouts. In just 10 weeks, I gained 6 kg of healthy muscle and feel more confident than ever. It’s like I found the missing piece in my routine.”</p>
+                <div class="achievement-details">
+                    <p><strong>Name:</strong> Ahmed Rashed, 24</p>
+                    <p><strong>Goal:</strong> Muscle Gain</p>
+                    <p><strong>Result:</strong> Gained 6 kg of muscle, improved gym performance, boosted self-esteem</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hanaa's Story -->
+        <div class="achievement-card">
+            <img alt="" src="photos/Hanaa’.jpeg.jpg" width="203" height="454">
+            <div class="achievement-content">
+                <h2>Hanaa’s Healing – Managing Diabetes Through Food</h2>
+                <p>"من بعد ما اكتشفت إني عندي سكر من النوع التاني، حياتي كانت ماشية بالعافية. كنت دايمًا محتارة آكل إيه وكنت خايفة كل وجبة تأثر على صحتي. واحدة صاحبتي قالتلي على Eat Well، وفعلاً كانت نقطة تحول في حياتي. عملولي خطة أكل مخصوصة لحالتي صحية، متوازنة وطعمها حلو. في خلال أسابيع، السكر بدأ يثبت وبدأت أحس إني أحس إني بقيت متحكمة في حالتي. مابقتش حاسة إن المرض بيتحكم فيّ، بقيت أنا اللي بتحكم فيه."</p>
+                <div class="achievement-details">
+                    <p><strong>Name:</strong> Hanaa Mahmoud, 52</p>
+                    <p><strong>Condition:</strong> Type 2 Diabetes</p>
+                    <p><strong>Result:</strong> Improved blood sugar stability, reduced medication, renewed confidence</p>
+                </div>
+            </div>
+        </div>
+        
+                <!-- Youssef's Story -->
+        <div class="achievement-card">
+            <img alt="" src="photos/youssef.jpeg.jpg" width="939" height="291">
+            <div class="achievement-content">
+                <h2>Youssef’s Success – A Heart-Healthy Turnaround</h2>
+                <p>“Before Eat Well, my cholesterol levels were dangerously high, and I knew I had to make a change. I felt overwhelmed and unsure where to start. Eat Well gave me heart-friendly meals tailored to my needs—low in saturated fat and rich in fiber. After two months, not only did my cholesterol improve, but I also lost 6 kg without ever feeling deprived.”</p>
+                <div class="achievement-details">
+                    <p><strong>Name:</strong>Youssef El Sayed, 38</p>
+                    <p><strong>Condition:</strong> Lower Cholesterol & Improve Heart Health</p>
+                    <p><strong>Result:</strong> Improved cholesterol levels, lost 6 kg, healthier eating habits</p>
+                </div>
+            </div>
+        </div>
+
+                <!-- Mariam's Story -->
+        <div class="achievement-card">
+            <img alt="" src="photos/mariam2.jpeg.jpg" width="504" height="186">
+            <div class="achievement-content">
+                <h2>Mariam’s Journey – Finding Balance with PCOS</h2>
+                <p>“Before Eat Well, I struggled with PCOS. No matter what diet I tried, nothing seemed to work. I felt constantly bloated, tired, and frustrated. But then I found a plan that actually understood my body. Eat Well gave me meals focused on hormone balance and the right carbs. In just a few weeks, my energy improved, my symptoms eased, and I finally started losing the stubborn weight.”</p>
+                <div class="achievement-details">
+                    <p><strong>Name:</strong>Mariam Tarek, 27</p>
+                    <p><strong>Condition:</strong> PCOS Management & Weight Loss</p>
+                    <p><strong>Result:</strong> Reduced bloating and fatigue, improved energy, gradual weight loss</p>
+                </div>
+            </div>
+        </div>
+
+                <!-- Omar's Story -->
+        <div class="achievement-card">
+            <img alt="" src="photos/omar.jpeg.jpg" width="1033" height="281">
+            <div class="achievement-content">
+                <h2>Omar Adel – “I stopped surviving and started living.</h2>
+                <p>“Before Eat Well, I had been living with hypertension for over 10 years. My lifestyle was a mess—long work hours, salty takeout, and constant stress. My blood pressure was always high, and I felt like a ticking time bomb. But after starting the personalized meal plan with Eat Well, everything changed. The low-sodium, high-potassium meals were made just for me. After six weeks, my blood pressure dropped, and I finally felt peace of mind. I’m no longer just surviving—I’m truly living.”</p>
+                <div class="achievement-details">
+                    <p><strong>Name:</strong>Omar Adel, 52</p>
+                    <p><strong>Condition:</strong> Manage Hypertension</p>
+                    <p><strong>Result:</strong> Normalized blood pressure, reduced stress, improved quality of life</p>
+                </div>
+            </div>
+        </div>
+                <div class="btn-center">
+            <a href="index.html" class="btn">← Back to Home</a>
+        </div>
+  </section>
+
+
+
+    </section>
+
+    <footer>
+        &copy; 2025 EatWell. Empowering health through smart food choices.
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="shortcut icon" href="photos/logo.jpeg.jpg">
+  <title>Choose Your Exercise - EatWell</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #1c9c52;
+      color: #333;
+    }
+
+    header {
+      background-color: #2ecc71;
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .exercise-card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin: 1rem;
+      padding: 1.5rem;
+      width: 250px;
+      text-align: center;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .exercise-card:hover {
+      transform: scale(1.05);
+    }
+
+    .exercise-card img {
+      width: 100%;
+      border-radius: 10px;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .exercise-card h3 {
+      margin: 1rem 0 0.5rem;
+      color: #27ae60;
+    }
+    
+        .btn-center {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .shop-btn {
+      display: inline-block;
+      background-color: #2ecc71;
+      color: white;
+      padding: 1rem 2rem;
+      margin: 1rem;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .shop-btn:hover {
+      background-color: #27ae60;
+    }
+
+  .style1 {
+	margin-right: 0px;
+}
+
+    .home-logo {
+      position: absolute;
+      top: 15px;
+      left: 20px;
+    }
+
+    </style>
+</head>
+<body>
+
+            <label for="address">
+<a href="index.html" class="home-logo" style="left: 22px; top: 5px; width: 76px; height: 80px">
+<img alt="EatWell Logo" src="photos/logoH.jpeg.jpg" class="style1" width="76" height="78"></a></label><header>Choose Your Type of Exercise</header>
+
+<div class="container">
+  <div class="exercise-card" onclick="location.href='cardio.html'">
+    <img alt="" src="photos/cardio.jpeg.jpg" width="155" height="89">
+    <h3>Cardio</h3>
+  </div>
+
+  <div class="exercise-card" onclick="location.href='strength.html'">
+    <img alt="" src="photos/strength-training.jpeg.jpg" width="201" height="66">
+    <h3>Strength Training</h3>
+  </div>
+
+  <div class="exercise-card" onclick="location.href='yoga.html'">
+    <img alt="" src="photos/yoga.jpeg.jpg" class="style1" width="118" height="55">
+    <h3>Yoga</h3>
+  </div>
+
+  <div class="exercise-card" onclick="location.href='stretching.html'">
+    <img alt="" src="photos/Stretching.jpeg.jpg" width="198" height="108">
+    <h3>Stretching</h3>
+  </div>
+
+  <div class="exercise-card" onclick="location.href='pilates.html'">
+    <img alt="" src="photos/Pilates.jpeg.jpg" width="111" height="69">
+    <h3>Pilates</h3>
+  </div>
+
+  <div class="exercise-card" onclick="location.href='hiit.html'">
+    <img alt="" src="photos/HIIT.jpeg.jpg" width="114" height="91">
+    <h3>HIIT</h3>
+  </div>
+
+  <div class="exercise-card" onclick="location.href='dance.html'">
+    <img alt="" src="photos/Dance.jpeg.jpg" width="164" height="45">
+    <h3>Dance</h3>
+  </div>
+
+  <div class="exercise-card" onclick="location.href='walking.html'">
+    <img alt="" src="photos/Walking.jpeg.jpg" width="192" height="82">
+    <h3>Walking</h3>
+  </div>
+
+  <div class="exercise-card" onclick="location.href='cycling.html'">
+    <img alt="" src="photos/Cycling.jpeg.jpg" width="116" height="63">
+    <h3>Cycling</h3>
+  </div>
+</div>
+      <a href="index.html" class="shop-btn">← Back to Home</a>
+
+</body>
+</html>

@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Customize Your Meal Plan | EatWell</title>
+  <link rel="stylesheet" href="Diabetes.css" />
+  <link rel="shortcut icon" href="photos/logo.jpeg.jpg">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background:#1c9c52;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #2ecc71;
+      color: white;
+      padding: 1.5rem 2rem;
+      text-align: center;
+    }
+
+    .customize-section {
+      max-width: 1000px;
+      margin: 2rem auto;
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .customize-section h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+      color: #264653;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+
+    input[type="text"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .form-row .form-group {
+      flex: 1;
+      min-width: 240px;
+    }
+
+    .submit-btn {
+      background-color: #2ecc71;
+      color: white;
+      border: none;
+      padding: 0.75rem 2rem;
+      font-size: 1.1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      display: block;
+      margin: 2rem auto 0;
+      transition: background 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: #27ae60;
+    }
+
+    .note {
+      font-size: 0.9rem;
+      color: #555;
+      text-align: center;
+      margin-top: 1rem;
+    }
+          .home-logo {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    display: inline-block;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Customize Your Meal Plan</h1>
+  <p>
+        <a href="index.html" class="home-logo" style="width: 93px; height: 72px">
+        <img alt="" src="photos/logoH.jpeg.jpg" width="105" height="101"></a></p>
+  </header>
+
+  <section class="customize-section">
+    <h2>Your Preferences</h2>
+    <form action="thankyou.html" method="post">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="goal">Your Goal</label>
+          <select id="goal" name="goal" required>
+            <option value="">-- Select --</option>
+            <option value="weight-loss">Weight Loss</option>
+            <option value="muscle-gain">Muscle Gain</option>
+            <option value="heart-health">Heart Health</option>
+            <option value="general-wellness">General Wellness</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="diet">Diet Type</label>
+          <select id="diet" name="diet" required>
+            <option value="">-- Select --</option>
+            <option value="Diabetes">Diabetes</option>
+            <option value="Weight Loss">Weight Loss</option>
+            <option value="Heart Health">Heart Health</option>
+            <option value="General Wellness">General Wellness</option>
+            <option value="Body Builders">Body Builders</option>
+            <option value="vegetarian">Vegetarian</option>
+            <option value="vegan">Vegan</option>
+            <option value="Hypertension">Hypertension</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="meals-per-day">Meals Per Day</label>
+          <select id="meals-per-day" name="meals-per-day" required>
+            <option value="">-- Select --</option>
+            <option value="3">3 Meals</option>
+            <option value="5">5 Meals (with snacks)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="calories">Target Calories</label>
+          <input type="text" id="calories" name="calories" placeholder="e.g. 1800 kcal" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="allergies">Allergies or Ingredients to Avoid</label>
+        <input type="text" id="allergies" name="allergies" placeholder="e.g. nuts, dairy" />
+      </div>
+
+      <div class="form-group">
+        <label for="preferences">Additional Preferences</label>
+        <textarea id="preferences" name="preferences" rows="4" placeholder="Write anything else we should know..."></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Generate My Custom Meal Plan</button>
+    </form>
+
+    <p class="note">* Your personalized plan will be created based on your answers and emailed within 24 hours.</p>
+  </section>
+</body>
+</html>

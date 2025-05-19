@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>New Year Wellness Event</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Quicksand&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="photos/logo.jpeg.jpg">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(to bottom, #ffffff, #e6f2e6);
+      color: #333;
+    }
+
+    header {
+      background-image: url('https://cdn.pixabay.com/photo/2017/12/30/17/57/christmas-3053486_1280.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 5rem 1rem;
+      position: relative;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    header h1, header p {
+      position: relative;
+      z-index: 2;
+    }
+
+    header h1 {
+      font-family: 'Amiri', serif;
+      font-size: 3rem;
+      margin: 0;
+      color: #fff;
+      text-shadow: 2px 2px 5px #b30000;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      margin-top: 1rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #fff;
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .intro img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 6px 20px rgba(0, 100, 0, 0.2);
+    }
+
+    .intro p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      background-color: #fdfdfd;
+      padding: 1rem;
+      border-left: 5px solid #d40000;
+      border-radius: 8px;
+    }
+
+    section {
+      margin-top: 2.5rem;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      color: #006600;
+      border-bottom: 2px solid #006600;
+      margin-bottom: 1rem;
+      font-family: 'Amiri', serif;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      margin-bottom: 1rem;
+      padding-left: 1.5rem;
+      position: relative;
+      background: #fff;
+      border-left: 5px solid #d40000;
+      border-radius: 6px;
+      padding: 0.7rem 1rem;
+    }
+
+    ul li::before {
+      content: '🎄';
+      position: absolute;
+      left: 0;
+    }
+
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    .schedule-table th,
+    .schedule-table td {
+      border: 1px solid #c0c0c0;
+      padding: 0.75rem;
+      text-align: left;
+    }
+
+    .schedule-table th {
+      background-color: #d40000;
+      color: white;
+    }
+
+    .guest {
+      background-color: #f1f1f1;
+      padding: 1rem;
+      border-left: 5px solid #006600;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+    }
+
+    .meal-preview {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .meal-preview div {
+      background-color: #fff;
+      padding: 1rem;
+      border-left: 5px solid #d40000;
+      border-radius: 6px;
+    }
+
+    .cta {
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .cta a {
+      background-color: #d40000;
+      color: #fff;
+      padding: 0.9rem 2rem;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: background 0.3s ease;
+    }
+
+    .cta a:hover {
+      background-color: #ff3333;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background-color: #006600;
+      color: white;
+      margin-top: 4rem;
+      font-size: 0.95rem;
+    }
+    
+                      .home-logo {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    display: inline-block;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+    cursor: pointer;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>New Year Wellness Event</h1>
+  </header>
+  
+          <a href="index.html" class="home-logo">
+      <img alt="" src="photos/logo-new-years.jpeg.jpg" width="103" height="100">
+    </a>
+
+
+  <main>
+    <section class="intro">
+      <p>
+        Celebrate the beginning of 2025 with a healthy reset! Join EatWell and PFT for a vibrant event full of fitness, festive food, and fun traditions to welcome a year of wellness.
+      </p>
+    </section>
+
+    <section class="highlights">
+      <h2>Event Highlights</h2>
+      <ul>
+        <li>Festive-themed wellness meals & snacks</li>
+        <li>Group workouts with holiday spirit</li>
+        <li>New Year’s resolutions & goal-setting workshops</li>
+        <li>Fun family-friendly games and challenges</li>
+        <li>Special holiday raffle & surprises!</li>
+      </ul>
+    </section>
+
+    <section class="schedule">
+      <h2>Schedule</h2>
+      <table class="schedule-table">
+        <tr>
+          <th>Time</th>
+          <th>Activity</th>
+        </tr>
+        <tr>
+          <td>4:00 PM</td>
+          <td>Welcome & Warm-up Yoga</td>
+        </tr>
+        <tr>
+          <td>5:00 PM</td>
+          <td>Red & Green Smoothie Making</td>
+        </tr>
+        <tr>
+          <td>6:00 PM</td>
+          <td>Festive Family Fitness Challenge</td>
+        </tr>
+        <tr>
+          <td>7:00 PM</td>
+          <td>Healthy Holiday Cooking Demo</td>
+        </tr>
+        <tr>
+          <td>8:30 PM</td>
+          <td>Goal Setting & Celebration Toast</td>
+        </tr>
+      </table>
+    </section>
+
+    <section class="guests">
+      <h2>Special Guests</h2>
+      <div class="guest">
+        <strong>Coach Layla Nour</strong> – Holiday Wellness Trainer
+      </div>
+      <div class="guest">
+        <strong>Chef Amir Fathy</strong> – Healthy Holiday Food Expert
+      </div>
+    </section>
+
+    <section class="meal-preview">
+      <h2>Sample Menu</h2>
+      <div>
+        <strong>Green Breakfast Bowl:</strong><br/>
+        Kale, kiwi, green apple, almonds, and Greek yogurt
+      </div>
+      <div>
+        <strong>Festive Dinner:</strong><br/>
+        Grilled chicken with rosemary, cranberry quinoa, steamed veggies
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>Celebrate with Us!</h2>
+      <a href="#register">Join the Festivities</a>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 EatWell × PFT | Wishing you joy, health, and a Happy New Year! 🎆
+  </footer>
+</body>
+</html>

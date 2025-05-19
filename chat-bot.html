@@ -1,0 +1,292 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EatWell AI Chat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="EatWelll.css">
+  <link rel="shortcut icon" href="photos/logo.jpeg.jpg">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1c9c52;
+      margin: 0;
+      padding: 0;
+    }
+    .chat-container {
+      max-width: 700px;
+      margin: 0 auto;
+      margin-top: 10px;
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .chat-box {
+      height: 400px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: 15px;
+      background: #fff;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .chat-msg {
+      margin: 10px 0;
+    }
+    .user {
+      text-align: right;
+      color: #2c3e50;
+    }
+    .bot {
+      text-align: left;
+      color: #1c9c52;
+    }
+    .typing {
+      font-style: italic;
+      color: #888;
+    }
+    input[type="text"] {
+      width: 80%;
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 15px;
+      font-size: 1rem;
+      background-color: #1c9c52;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      margin-left: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #168d49;
+    }
+    .back-btn {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      background-color: #2ecc71;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      margin-top: 20px;
+    }
+    .back-btn:hover {
+      background-color: #27ae60;
+    }
+  </style>
+</head>
+<body>
+
+<a href="index.html" class="home-logo" style="left: 20px; top: 10px; width: 120px; height: 102px">
+  <img alt="EatWell Logo" src="photos/logoB.jpeg.jpg" width="88" height="83">
+</a>
+
+<div class="chat-container">
+  <h2>EatWell AI Assistant 🍏</h2>
+  <div class="chat-box" id="chat-box">
+    <div class="chat-msg bot">Hello! I'm EatWell AI. How can I help you today?</div>
+  </div>
+
+  <input type="text" id="user-input" placeholder="Ask me anything...">
+  <button onclick="sendMessage()">Send</button>
+  <a href="index.html" class="back-btn">← Back Home</a>
+</div>
+
+<script>
+  const chatBox = document.getElementById("chat-box");
+
+  function sendMessage() {
+    const userInput = document.getElementById("user-input");
+    const userText = userInput.value.trim();
+    if (!userText) return;
+
+    chatBox.innerHTML += `<div class="chat-msg user">${userText}</div>`;
+    userInput.value = "";
+
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    const typingMsg = document.createElement("div");
+    typingMsg.className = "chat-msg bot typing";
+    typingMsg.innerText = "Typing...";
+    chatBox.appendChild(typingMsg);
+
+    setTimeout(() => {
+      chatBox.removeChild(typingMsg);
+
+      const botResponse = getBotResponse(userText);
+      const responseMsg = document.createElement("div");
+      responseMsg.className = "chat-msg bot";
+      responseMsg.innerHTML = botResponse;
+      chatBox.appendChild(responseMsg);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }, 1500);
+  }
+
+  document.getElementById("user-input").addEventListener("keypress", function (e) {
+    if (e.key === "Enter") sendMessage();
+  });
+
+  function getBotResponse(input) {
+    const text = input.toLowerCase();
+
+    const responses = [
+      {
+        keywords: ["plan", "meal"],
+        response: `We offer 8 customized plans: <a href="diabetes.html" target="_blank">Diabetes</a>, <a href="weightloss.html" target="_blank">Weight Loss</a>, <a href="heart-healthh.html" target="_blank">Heart Health</a>, <a href="general-wellnes.html" target="_blank">General Wellness</a>, <a href="body-builderss.html" target="_blank">Body Builders</a>, <a href="vegetarian.html" target="_blank">Vegetarian</a>, <a href="vegan.html" target="_blank">Vegan</a>, and <a href="hypertension.html" target="_blank">Hypertension</a>.`
+      },
+      {
+        keywords: ["diabetes"],
+        response: `We offer a <a href="diabetes.html" target="_blank">Diabetes Care Plan</a> with low-glycemic, fiber-rich meals designed to help manage blood sugar levels.`
+      },
+      {
+        keywords: ["weight loss"],
+        response: `Our <a href="weightloss.html" target="_blank">Weight Loss Plan</a> features calorie-controlled meals tailored to help you slim down healthily.`
+      },
+      {
+        keywords: ["heart"],
+        response: `The <a href="heart-healthh.html" target="_blank">Heart Health Plan</a> includes fiber-rich and omega-3 meals, low in saturated fats for optimal heart support.`
+      },
+      {
+        keywords: ["general", "wellness"],
+        response: `Stay balanced and energized with our <a href="general-wellnes.html" target="_blank">General Wellness Plan</a> crafted for everyday health.`
+      },
+      {
+        keywords: ["body builder", "muscle"],
+        response: `Fuel your muscle growth with high-protein meals in our <a href="body-builder.html" target="_blank">Body Builders Plan</a>.`
+      },
+      {
+        keywords: ["vegetarian"],
+        response: `Explore the <a href="vegetarian.html" target="_blank">Vegetarian Plan</a> for nutrient-packed, plant-based meals.`
+      },
+      {
+        keywords: ["vegan"],
+        response: `Try our <a href="vegan.html" target="_blank">Vegan Plan</a>—100% plant-based and free from all animal products.`
+      },
+      {
+        keywords: ["hypertension", "blood pressure"],
+        response: `Manage blood pressure with our <a href="hypertension.html" target="_blank">Hypertension Plan</a> offering low-sodium, heart-friendly meals.`
+      },
+      {
+        keywords: ["exercise", "workout", "exercises"],
+        response: `Discover our 5 exercise categories: Strength, Yoga, Cardio, Flexibility, and Mindfulness. <a href="exercise.html" target="_blank">See More</a>`
+      },
+      {
+        keywords: ["strength"],
+        response: `Build your power with <a href="strength.html" target="_blank">Strength Exercises</a> like squats, planks, and resistance routines.`
+      },
+      {
+        keywords: ["yoga"],
+        response: `Embrace peace and posture with our <a href="yoga.html" target="_blank">Yoga Routines</a>.`
+      },
+      {
+        keywords: ["cardio"],
+        response: `Boost your heart rate and stamina with <a href="cardio.html" target="_blank">Cardio Workouts</a>.`
+      },
+      {
+        keywords: ["stretching"],
+        response: `Improve your mobility through <a href="stretching.html" target="_blank">Stretching Exercises</a>.`
+      },
+      {
+        keywords: ["pilates"],
+        response: `You can improve your core strength, flexibility, and posture with <a href="pilates.html" target="_blank">Pilates exercises</a>.`
+      },
+      {
+        keywords: ["hiit", "high intensity"],
+        response: `Burn calories quickly through <a href="hiit.html" target="_blank">High-Intensity Interval Training (HIIT)</a>.`
+      },
+      {
+        keywords: ["dance"],
+        response: `Boost your cardiovascular health while having fun with <a href="dance.html" target="_blank">Dance Workouts</a>.`
+      },
+      {
+        keywords: ["walking", "walk"],
+        response: `Enhance your heart health and support weight loss by adding <a href="walking.html" target="_blank">Walking Routines</a> to your day.`
+      },
+      {
+        keywords: ["cycling", "bike"],
+        response: `Strengthen your legs and build endurance with <a href="cycling.html" target="_blank">Cycling Activities</a>—indoor or outdoor!`
+      },
+      {
+        keywords: ["guide", "how to use"],
+        response: `Get started with our <a href="guide.html" target="_blank">User Guide</a> and learn how to explore diets, chat with doctors, or shop smart.`
+      },
+      {
+        keywords: ["doctor", "contact"],
+        response: `Chat with certified professionals on our <a href="doctorss.html" target="_blank">Doctors Page</a>.`
+      },
+      {
+        keywords: ["location", "where", "offline", "find you"],
+        response: `We’re based in Cairo but deliver all over Egypt! Visit our <a href="offline-shop.html" target="_blank">Offline Shops</a>.`
+      },
+      {
+        keywords: ["email", "phone", "call"],
+        response: `Reach out to us via email (support@eatwell.com) or phone (+20 100 555 1234).`
+      },
+      {
+        keywords: ["shop", "store", "buy", "online"],
+        response: `Visit the <a href="online-shop.html" target="_blank">EatWell Shop</a> for healthy snacks, supplements, and fresh produce.`
+      },
+      {
+        keywords: ["products", "snack", "supplement"],
+        response: `Explore our <a href="online-shop.html" target="_blank">Shop</a> featuring protein snacks, vitamins, organic juices, and gluten-free meals.`
+      },
+      {
+        keywords: ["hi", "hello", "hey"],
+        response: `Hey there! 👋 I’m your EatWell Assistant. I can help with plans, workouts, doctors, and shopping!`
+      },
+      {
+        keywords: ["thank you", "thanks"],
+        response: `You're very welcome! 😊 I'm here to help you live and eat well!`
+      },
+      {
+        keywords: ["features", "website", "what can i do"],
+        response: `Welcome to your health hub! Browse <a href="EatWelll.html" target="_blank">EatWell</a> for plans, workouts, doctor chats, and a healthy product shop.`
+      },
+      {
+        keywords: ["pft", "partnership", "collaboration"],
+        response: `We’ve partnered with <a href="pft-event.html" target="_blank">PFT (Personal Training Football)</a> to launch exciting wellness events!`
+      },
+      {
+        keywords: ["event", "celebration", "ramadan", "sahel", "anniversary", "new year", "wellness day"],
+        response: `Check out our events:
+        <ul>
+          <li><a href="anniversary-event.html" target="_blank">Anniversary Celebration 🎉</a></li>
+          <li><a href="ramadan-event.html" target="_blank">Ramadan Night 🌙</a></li>
+          <li><a href="new-year-event.html" target="_blank">New Year Wellness 🎆</a></li>
+          <li><a href="summer-event.html" target="_blank">Summer Wellness at Sahel ☀️</a></li>
+          <li><a href="pft-event.html" target="_blank">PFT x EatWell Event 🏋️</a></li>
+          <li><a href="wellnes-day-event.html" target="_blank">Wellness Day 🍃</a></li>
+        </ul>`
+      },
+      {
+        keywords: ["gift", "discount", "offer", "box", "free"],
+        response: `🎁 <strong>EatWell Gift Box Offer</strong><br>
+        Spend over <strong>EGP 1000</strong> to unlock a surprise gift box!<br>
+        <ul>
+          <li>Discount coupons</li>
+          <li>Free healthy samples</li>
+          <li>Exclusive flash sale access</li>
+        </ul>
+        Shop now in our <a href="online-shop.html" target="_blank">Online Store</a>! 🎉`
+      }
+    ];
+
+    for (let item of responses) {
+      if (item.keywords.some(keyword => text.includes(keyword))) {
+        return item.response;
+      }
+    }
+
+    return `I'm still learning 🤖 Try asking about our plans, exercises, shop, doctors, or how to use the site! <a href="EatWelll.html" target="_blank">Explore the Website</a>`;
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,243 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payment - EatWell</title>
+  <link rel="shortcut icon" href="photos/logo.jpeg.jpg">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1c9c52;
+      margin: 0;
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .payment-container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    input[type="text"],
+    .select-box,
+    button {
+      width: 100%;
+      padding: 0.7rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #2ecc71;
+      color: white;
+      border: none;
+      margin-top: 1.5rem;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #27ae60;
+    }
+
+    .dropdown-wrapper {
+      position: relative;
+    }
+
+    .select-box {
+      cursor: pointer;
+      background-color: #fff;
+    }
+    
+.select-box {
+  cursor: pointer;
+  background-color: #fff;
+  position: relative;
+  padding-right: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0.6rem;
+}
+
+.select-box::after {
+  content: "▼";
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #555;
+  font-size: 0.8rem;
+  pointer-events: none;
+  transition: transform 0.3s ease;
+}
+
+.select-box.open::after {
+  transform: translateY(-50%) rotate(180deg); 
+}
+
+.select-box select {
+  width: 100%;
+  padding: 0.6rem;
+  background-color: #fff;
+  border: none;
+  appearance: none;  
+  font-size: 1rem;
+  color: #555;
+}
+
+.select-box select:focus {
+  outline: none;
+  border: 1px solid #2ecc71;
+}
+
+
+    .options-list {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      max-height: 200px;
+      overflow-y: auto;
+      z-index: 10;
+      display: none;
+    }
+
+    .options-list label {
+      display: block;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+
+    .options-list input {
+      margin-right: 8px;
+    }
+
+    .btn-center {
+      text-align: center;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background-color: #2ecc71;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background-color: #27ae60;
+    }
+  </style>
+</head>
+<body>
+
+<div class="payment-container">
+  <h2>Pay To Get Your Plan</h2>
+  <form onsubmit="submitPayment(event)">
+    
+    <label for="planSelect">Select Plan(s)</label>
+    <div class="dropdown-wrapper">
+      <div class="select-box" onclick="toggleOptions()">Select plans...</div>
+      <div class="options-list" id="optionsList">
+        <label><input type="checkbox" value="Diabetes Plan"> Diabetes Plan</label>
+        <label><input type="checkbox" value="weight loss Plan"> Weight Loss Plan</label>
+        <label><input type="checkbox" value="heart health Plan"> Heart Health Plan</label>
+        <label><input type="checkbox" value="General Wellness Plan"> General Wellness Plan</label>
+        <label><input type="checkbox" value="Body Builders Plan"> Body Builders Plan</label>
+        <label><input type="checkbox" value="Vegetarian Plan"> Vegetarian Plan</label>
+        <label><input type="checkbox" value="Vegan Plan"> Vegan Plan</label>
+        <label><input type="checkbox" value="Hypertension Plan"> Hypertension Plan</label>
+        
+      </div>
+    </div>
+
+    <label for="name">Full Name</label>
+    <input type="text" id="name" required>
+
+    <label for="card">Card Number</label>
+    <input type="text" id="card" maxlength="19" placeholder="1234 5678 9012 3456" required>
+
+    <label for="expiry">Expiry Date</label>
+    <input type="text" id="expiry" placeholder="MM/YY" required>
+
+    <label for="cvv">CVV</label>
+    <input type="text" id="cvv" maxlength="4" required>
+
+    <button type="submit">Submit Payment</button>
+  </form>
+
+  <div class="btn-center">
+    <a href="index.html" class="back-btn">← Back Home</a>
+  </div>
+</div>
+
+<script>
+  const selectBox = document.querySelector('.select-box');
+  const optionsList = document.getElementById('optionsList');
+
+  function toggleOptions() {
+    optionsList.style.display = optionsList.style.display === 'block' ? 'none' : 'block';
+  }
+
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.dropdown-wrapper')) {
+      optionsList.style.display = 'none';
+    }
+  });
+
+  optionsList.addEventListener('change', updateSelectedText);
+
+  function updateSelectedText() {
+    const checked = optionsList.querySelectorAll('input:checked');
+    const count = checked.length;
+    if (count === 0) {
+      selectBox.textContent = 'Select plans...';
+    } else {
+      selectBox.textContent = `${count} plan${count > 1 ? 's' : ''} selected`;
+    }
+  }
+
+  function submitPayment(event) {
+    event.preventDefault();
+    const selectedPlans = Array.from(document.querySelectorAll('#optionsList input:checked')).map(cb => cb.value);
+    if (selectedPlans.length === 0) {
+      alert('Please select at least one plan.');
+      return;
+    }
+    console.log('Selected plans:', selectedPlans);
+    window.location.href = 'plan.html'; // you can customize or pass values here
+  }
+</script>
+
+</body>
+</html>

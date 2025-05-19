@@ -1,0 +1,1192 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EatWell - Shop</title>
+  <link rel="stylesheet" href="EatWelll.css">
+  <link rel="shortcut icon" href="photos/logo.jpeg.jpg">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #1c9c52;
+    }
+
+.main-header {
+  position: relative;
+  height: 80px;
+  background-color: #2ecc71;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 0 2rem;
+}
+
+.header-content {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.site-title {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.cart-icon {
+  position: absolute;
+  right: 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.cart-icon::after {
+  content: attr(data-count);
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: white;
+  color: #2ecc71;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+.home-logo {
+  position: absolute;
+  top: 5px;
+  left: 20px;
+}
+
+.logo {
+  height: 70px;
+  width: auto;
+  cursor: pointer;
+}
+
+    .shop-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    .category-title {
+      font-size: 1.5rem;
+      color: #2c3e50;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #2ecc71;
+      padding-bottom: 0.5rem;
+    }
+
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .product {
+      flex: 1 1 200px;
+      background-color: #b9bdba;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .product img {
+      border-radius: 8px;
+    }
+
+    .product h4 {
+      margin: 0.5rem 0 0;
+    }
+
+    .price {
+      font-weight: bold;
+      margin-top: 5px;
+      color: #2c3e50;
+    }
+
+    .product button {
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: #2ecc71;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .product button:hover {
+      background-color: #27ae60;
+    }
+
+    .btn-center {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .btn, .shop-btn {
+      background-color: #2ecc71;
+      padding: 10px 20px;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      display: inline-block;
+    }
+
+    .btn:hover, .shop-btn:hover {
+      background-color: #27ae60;
+    }
+
+    .cart-modal {
+      display: none;
+      position: fixed;
+      top: 70px;
+      right: 30px;
+      width: 300px;
+      max-height: 400px;
+      overflow-y: auto;
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      padding: 1rem;
+      z-index: 1000;
+    }
+
+    .cart-modal h3 {
+      margin-top: 0;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 0.5rem;
+      color: #2c3e50;
+    }
+
+    .cart-item {
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 5px;
+    }
+
+.cart-modal .closse-btn {
+  display: block;
+  width: 25%;                 
+  text-align: center;         
+  background-color: #e74c3c;
+  color: white;
+  padding: 0.4rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-left: auto;          
+  margin-right: 0;            
+}
+
+.cart-modal .closse-btn:hover {
+  background-color: #c0392b;
+}
+
+.gift-box {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 80px;
+  height: 80px;
+  border: 5px solid #1c9c52; 
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 999;
+  background-color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: circle(50%);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.gift-box:hover {
+  transform: scale(1.05);
+}
+
+.gift-icon {
+  position: absolute;
+  font-size: 30px;
+  z-index: 2;
+  pointer-events: none;
+  color: #1c9c52;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.water {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(46, 204, 113, 0.5),
+    rgba(26, 188, 156, 0.8)
+  );
+  transition: height 0.8s cubic-bezier(0.23, 1, 0.32, 1), background 1s ease;
+  overflow: hidden;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+}
+
+.water-shine {
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 400%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.1) 45%,
+    rgba(255,255,255,0.4) 50%,
+    rgba(255,255,255,0.1) 55%,
+    rgba(255,255,255,0) 100%
+  );
+  transform: rotate(25deg);
+  animation: shine 8s linear infinite;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.bubbles {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.bubble {
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: rise linear;
+}
+
+.ripple {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  animation: ripple-effect 1.5s ease-out;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.water:before, .water:after {
+  content: "";
+  position: absolute;
+  width: 300%;
+  height: 40%;
+  top: -20%;
+  left: -100%;
+  background-repeat: repeat-x;
+}
+
+.water:before {
+  background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 350 20" xmlns="http://www.w3.org/2000/svg"><path fill="rgba(255,255,255,0.5)" d="M0 10 Q 25 0, 50 10 T 100 10 T 150 5 T 200 15 T 250 5 T 300 10 T 350 0 V20 H0 Z"/></svg>');
+  background-size: 50% 100%;
+  animation: wave 8s linear infinite;
+  opacity: 0.8;
+}
+
+.water:after {
+  background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 350 20" xmlns="http://www.w3.org/2000/svg"><path fill="rgba(255,255,255,0.3)" d="M0 5 Q 35 15, 70 5 T 140 10 T 210 5 T 280 15 T 350 5 V20 H0 Z"/></svg>');
+  background-size: 40% 100%;
+  animation: wave 6s linear infinite;
+  animation-direction: reverse;
+  top: -10%;
+}
+
+/* Water wave animations */
+@keyframes wave {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes wave-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes shine {
+  0% { left: -150%; }
+  100% { left: 150%; }
+}
+
+@keyframes rise {
+  0% {
+    bottom: 0;
+    opacity: 0.8;
+  }
+  100% {
+    bottom: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes ripple-effect {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.8;
+  }
+  100% {
+    width: 150%;
+    height: 150%;
+    opacity: 0;
+  }
+}
+
+.style1 {
+	cursor: pointer;
+}
+
+.back-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    padding: 0.6rem 1.2rem;
+    background-color: #2ecc71;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    z-index: 1000;
+}
+
+.back-btn:hover {
+    background-color: #27ae60;
+}
+
+.quantity-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+}
+
+.quantity-controls button {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  font-size: 16px;
+  margin: 0 5px;
+}
+
+.quantity-controls .qty-value {
+  font-weight: bold;
+  width: 30px;
+  text-align: center;
+}
+
+.dec-btn {
+  background-color: #e74c3c !important;
+}
+
+.dec-btn:hover {
+  background-color: #c0392b !important;
+}
+
+/* Fee display styles */
+.discount {
+  color: #e74c3c;
+}
+
+/* Disease selector styles */
+.disease-selector {
+  margin: 1rem 0 2rem;
+  padding: 1.5rem;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.disease-selector h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.disease-selector select {
+  padding: 0.8rem 1.5rem;
+  border: 2px solid #2ecc71;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 0.3s;
+  width: 250px;
+}
+
+.disease-selector select:hover,
+.disease-selector select:focus {
+  border-color: #27ae60;
+  outline: none;
+}
+
+.selector-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.customize-btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: #2ecc71;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.customize-btn:hover {
+  background-color: #27ae60;
+  transform: translateY(-2px);
+}
+
+  .style2 {
+	text-align: right;
+}
+
+  </style>
+</head>
+<body>
+
+<header class="main-header">
+  <div class="header-content">
+    <h1 class="site-title">EatWell Online Shop</h1>
+  </div>
+  <div class="cart-icon" id="cart-icon" data-count="0">🛒</div>
+</header>
+
+<a href="index.html" class="home-logo">
+  <img alt="EatWell Logo" src="photos/logoH.jpeg.jpg" class="style1" width="76" height="81">
+</a>
+
+<section class="shop-container">
+
+  <!-- Disease Selector Dropdown -->
+  <div class="disease-selector">
+    <h3>Select Your Health Condition:</h3>
+    <div class="selector-container">
+      <select id="disease-dropdown" aria-label="Health Condition" onchange="updateMealsByDisease()">
+        <option value="diabetes">Diabetes</option>
+        <option value="weightloss">Weight Loss</option>
+        <option value="hearthealth">Heart Health</option>
+        <option value="general">General Wellness</option>
+        <option value="bodybuilders">Body Builders</option>
+        <option value="vegetarian">Vegetarian</option>
+        <option value="vegan">Vegan</option>
+        <option value="hypertension">Hypertension</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Breakfast -->
+  <h2 class="category-title">Breakfast</h2>
+  <div class="products" id="breakfast-products">
+  </div>
+
+  <!-- Lunch -->
+  <h2 class="category-title">Lunch</h2>
+  <div class="products" id="lunch-products">
+  </div>
+
+  <!-- Dinner -->
+  <h2 class="category-title">Dinner</h2>
+  <div class="products" id="dinner-products">
+  </div>
+
+  <!-- Snacks -->
+  <h2 class="category-title">Snacks</h2>
+  <div class="products" id="snacks-products">
+  </div>
+
+  <!-- Desserts -->
+  <h2 class="category-title">Desserts</h2>
+  <div class="products" id="desserts-products">
+  </div>
+
+  <div class="btn-center">
+    <a href="index.html" class="shop-btn">← Back to Home</a>
+    <a href="offline-shop.html" class="back-btn">Go To Offline Shop</a>
+  </div>
+
+<div class="style2">
+
+</section>
+
+<!-- Cart Modal -->
+<div class="cart-modal" id="cart-modal">
+  <h3>Your Cart</h3>
+  <div id="cart-items"></div>
+  <div id="cart-total" style="margin-top: 10px; font-weight: bold; border-top: 1px solid #eee; padding-top: 10px;">Total: EGP 0</div>
+  <button id="proceed-payment-btn" onclick="proceedToPayment()" style="
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+  ">Proceed to Payment</button>
+  <div class="closse-btn" onclick="toggleCart()">Close</div>
+</div>
+
+<div class="gift-box" onclick="openGiftPopup()">
+  <div class="water" id="water"></div>
+  <span class="gift-icon">🎁</span>
+</div>
+
+<!-- Unified Modal -->
+<div id="congratulationsModal" style="
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 500px;
+  background: white;
+  border: 2px solid #2ecc71;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  z-index: 9999;
+  padding: 20px;
+  text-align: center;
+  font-family: sans-serif;
+">
+
+  <!-- Close Button -->
+  <span onclick="closeCongratulationsModal()" style="
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #888;
+  ">X</span>
+
+  <!-- Congratulations Message -->
+  <h2 style="color: #27ae60;">🎉 Congratulations!</h2>
+  <p>You've unlocked amazing discounts:</p>
+
+  <!-- Discount Info -->
+  <div style="margin-top: 15px; background: #f2f2f2; padding: 15px; border-radius: 8px;">
+    <ul style="list-style: none; padding-left: 0; text-align: left;">
+      <li>Loyalty Pays Off! You Spent 1,000+ EGP — Here’s 15% OFF to Say Thank You!</li>
+    </ul>
+  </div>
+
+</div>
+
+
+<script>
+  let cartItems = [];
+  let totalPrice = 0;
+  const cartIcon = document.getElementById("cart-icon");
+  const cartModal = document.getElementById("cart-modal");
+  const cartItemsContainer = document.getElementById("cart-items");
+  const giftCircle = document.getElementById("giftCircle");
+
+  // Initialize meals on page load
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize meal display based on selected disease
+    updateMealsByDisease();
+    
+    // Initialize cart icon with existing cart items
+    const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+    updateCartIcon(cartItems.length);
+    
+    // Initialize gift box water level
+    if (cartItems.length > 0) {
+      let total = 0;
+      cartItems.forEach(item => {
+        total += item.price * item.quantity;
+      });
+      totalPrice = total;
+      updateWaterLevel();
+    }
+    
+    // Create initial ripple effect
+    setTimeout(createRippleEffect, 500);
+    
+    // Generate bubbles for the gift box
+    setTimeout(createBubbles, 200);
+  });
+
+  // Add click event listener for cart icon
+  cartIcon.addEventListener("click", toggleCart);
+
+  function changeQuantityOnPage(itemName, price, change) {
+    const existingItemIndex = cartItems.findIndex(item => item.name === itemName);
+    
+    if (existingItemIndex !== -1) {
+      // Item exists in cart
+      const newQuantity = cartItems[existingItemIndex].quantity + change;
+      
+      if (newQuantity <= 0) {
+        // Remove item if quantity becomes 0 or negative
+        totalPrice -= cartItems[existingItemIndex].price * cartItems[existingItemIndex].quantity;
+        cartItems.splice(existingItemIndex, 1);
+      } else {
+        // Update quantity
+        cartItems[existingItemIndex].quantity = newQuantity;
+        totalPrice += price * change;
+      }
+    } else if (change > 0) {
+      // Add new item if it doesn't exist (only for positive change)
+      cartItems.push({ name: itemName, price, quantity: 1 });
+      totalPrice += price;
+    }
+    
+    updateCartDisplay();
+    updateAllQuantityDisplays();
+    updateGiftCircle();
+    
+    if (change > 0) {
+      createRippleEffect();
+    }
+  }
+  
+  function updateAllQuantityDisplays() {
+    // Reset all quantity displays to 0
+    document.querySelectorAll('.qty-value').forEach(elem => {
+      elem.textContent = "0";
+    });
+    
+    // Update quantities for items in cart
+    cartItems.forEach(item => {
+      const qtyElement = document.getElementById(`qty-${item.name}`);
+      if (qtyElement) {
+        qtyElement.textContent = item.quantity;
+      }
+    });
+  }
+
+  function addToCart(itemName, price) {
+    // Use the changeQuantityOnPage function to add item
+    changeQuantityOnPage(itemName, price, 1);
+  }
+
+  function updateCartDisplay() {
+    // Update cart icon count
+    const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+    cartIcon.setAttribute("data-count", totalItems);
+    
+    // Update cart items display
+    cartItemsContainer.innerHTML = '';
+    
+    if (cartItems.length === 0) {
+      cartItemsContainer.innerHTML = '<div class="cart-item">Your cart is empty</div>';
+      document.getElementById("cart-total").textContent = "Total: EGP 0";
+      return;
+    }
+    
+    cartItems.forEach((item, index) => {
+      const itemTotal = item.price * item.quantity;
+      cartItemsContainer.innerHTML += `
+        <div class="cart-item">
+          <div>${item.name} - EGP ${item.price}</div>
+          <div style="display: flex; align-items: center; margin-top: 5px;">
+            <button onclick="decreaseQuantity(${index})" style="width: 25px; height: 25px; padding: 0; background: #e74c3c;">-</button>
+            <span style="margin: 0 10px;">${item.quantity}</span>
+            <button onclick="increaseQuantity(${index})" style="width: 25px; height: 25px; padding: 0; background: #2ecc71;">+</button>
+            <span style="margin-left: 15px;">EGP ${itemTotal}</span>
+          </div>
+        </div>`;
+    });
+    
+    // Update total
+    document.getElementById("cart-total").textContent = `Total: EGP ${totalPrice}`;
+  }
+  
+  function increaseQuantity(index) {
+    const item = cartItems[index];
+    changeQuantityOnPage(item.name, item.price, 1);
+  }
+  
+  function decreaseQuantity(index) {
+    const item = cartItems[index];
+    changeQuantityOnPage(item.name, item.price, -1);
+  }
+
+  function toggleCart() {
+    cartModal.style.display = cartModal.style.display === 'block' ? 'none' : 'block';
+  }
+
+function updateGiftCircle() {
+  const percent = Math.min((totalPrice / 1000) * 100, 100);
+  const water = document.getElementById("water");
+  
+  // Create shine effect if it doesn't exist
+  if (!document.querySelector('.water-shine') && water) {
+    const shine = document.createElement('div');
+    shine.className = 'water-shine';
+    water.appendChild(shine);
+  }
+  
+  // Create bubbles container if it doesn't exist
+  if (!document.querySelector('.bubbles') && water) {
+    const bubbles = document.createElement('div');
+    bubbles.className = 'bubbles';
+    water.appendChild(bubbles);
+    createBubbles();
+  }
+  
+  // Create wave animation elements
+  if (!water.querySelector('.water-wave-top') && water) {
+    const waveTop = document.createElement('div');
+    waveTop.className = 'water-wave-top';
+    waveTop.style.cssText = `
+      position: absolute;
+      top: -5px;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      animation: wave-bounce 2s ease-in-out infinite;
+      z-index: 3;
+    `;
+    water.appendChild(waveTop);
+  }
+  
+  // Create additional wave animation elements for more dynamic waves
+  if (!water.querySelector('.water-wave-second') && water) {
+    const waveSecond = document.createElement('div');
+    waveSecond.className = 'water-wave-second';
+    waveSecond.style.cssText = `
+      position: absolute;
+      top: 5px;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      animation: wave-bounce 1.5s ease-in-out infinite 0.3s;
+      z-index: 2;
+      opacity: 0.7;
+    `;
+    water.appendChild(waveSecond);
+  }
+  
+  // Change water color based on percentage
+  if (percent > 80) {
+    water.style.background = 'linear-gradient(to bottom, rgba(46, 204, 113, 0.7), rgba(26, 188, 156, 0.9))';
+  } else if (percent > 50) {
+    water.style.background = 'linear-gradient(to bottom, rgba(52, 152, 219, 0.6), rgba(41, 128, 185, 0.8))';
+  } else {
+    water.style.background = 'linear-gradient(to bottom, rgba(155, 89, 182, 0.5), rgba(142, 68, 173, 0.7))';
+  }
+  
+  // Add a slight delay for a more natural filling effect
+  setTimeout(() => {
+    water.style.height = `${percent}%`;
+  }, 100);
+  
+  // Update gift box appearance based on progress
+  const giftBox = document.querySelector('.gift-box');
+  if (percent >= 100) {
+    giftBox.style.boxShadow = '0 0 15px rgba(46, 204, 113, 0.8)';
+    // Add a pulsing animation to the gift box when full
+    giftBox.style.animation = 'pulse 1.5s infinite alternate';
+    
+    // Add pulse keyframes if they don't exist
+    if (!document.querySelector('style[data-animation="pulse"]')) {
+      const style = document.createElement('style');
+      style.setAttribute('data-animation', 'pulse');
+      style.textContent = `
+        @keyframes pulse {
+          0% { transform: scale(1); }
+          100% { transform: scale(1.05); }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+  } else {
+    giftBox.style.boxShadow = '0 4px 10px rgba(0,0,0,0.2)';
+    giftBox.style.animation = '';
+  }
+}
+
+function createBubbles() {
+  const bubblesContainer = document.querySelector('.bubbles');
+  if (!bubblesContainer) return;
+  
+  // Clear existing bubbles
+  bubblesContainer.innerHTML = '';
+  
+  // Create random bubbles
+  for (let i = 0; i < 15; i++) {
+    setTimeout(() => {
+      if (!document.querySelector('.bubbles')) return;
+      
+      const bubble = document.createElement('div');
+      const size = Math.random() * 10 + 3;
+      const left = Math.random() * 100;
+      const duration = Math.random() * 7 + 3;
+      const delay = Math.random() * 5;
+      
+      bubble.className = 'bubble';
+      bubble.style.width = `${size}px`;
+      bubble.style.height = `${size}px`;
+      bubble.style.left = `${left}%`;
+      bubble.style.animationDuration = `${duration}s`;
+      bubble.style.animationDelay = `${delay}s`;
+      
+      // Add a slight wobble to the bubbles
+      bubble.style.transform = `translateX(${Math.random() * 5 - 2.5}px)`;
+      bubble.style.transition = 'transform 1s ease-in-out';
+      
+      // Randomly change bubble opacity
+      bubble.style.opacity = (Math.random() * 0.4 + 0.4).toString();
+      
+      bubblesContainer.appendChild(bubble);
+      
+      // Add wobble animation to bubbles
+      setInterval(() => {
+        if (bubble.parentNode) {
+          bubble.style.transform = `translateX(${Math.random() * 5 - 2.5}px)`;
+        }
+      }, 1000);
+      
+      // Remove bubble after animation completes
+      setTimeout(() => {
+        if (bubble.parentNode) {
+          bubble.parentNode.removeChild(bubble);
+        }
+      }, (duration + delay) * 1000);
+    }, i * 300);
+  }
+  
+  // Create new bubbles periodically
+  setTimeout(createBubbles, 8000);
+}
+
+function createRippleEffect() {
+  const water = document.getElementById("water");
+  if (!water) return;
+  
+  const ripple = document.createElement('div');
+  ripple.className = 'ripple';
+  
+  // Position the ripple at a random location
+  ripple.style.left = `${Math.random() * 80 + 10}%`;
+  ripple.style.top = `${Math.random() * 80 + 10}%`;
+  
+  water.appendChild(ripple);
+  
+  // Remove ripple after animation completes
+  setTimeout(() => {
+    if (ripple.parentNode) {
+      ripple.parentNode.removeChild(ripple);
+    }
+  }, 1500);
+}
+
+// Show the discount banner after reaching EGP 1000 and clicking on the gift circle
+function openGiftPopup() {
+  if (totalPrice >= 1000) {
+    showCongratulationsModal();
+  } else {
+    alert(`🎁 Spend EGP ${1000 - totalPrice} more to unlock your gift!`);
+  }
+}
+
+function showCongratulationsModal() {
+  const modal = document.getElementById("congratulationsModal");
+  modal.style.display = "block";
+}
+
+function closeCongratulationsModal() {
+  const modal = document.getElementById("congratulationsModal");
+  modal.style.display = "none";
+}
+
+function showDiscountBanner() {
+  discountBanner.style.display = "block";
+}
+
+function closeDiscountBanner() {
+  discountBanner.style.display = "none";
+}
+
+function proceedToPayment() {
+  if (cartItems.length === 0) {
+    alert("Your cart is empty. Please add items before proceeding to payment.");
+    return;
+  }
+  
+  // Store cart items in localStorage for the payment page to access
+  localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  localStorage.setItem('cartTotal', totalPrice);
+  
+  // Navigate to the payment page
+  window.location.href = 'shop-payment.html';
+}
+
+// Disease-based meal data
+const mealsByDisease = {
+  diabetes: {
+    breakfast: [
+      { name: "Sweet Balance Bowl", price: 60, image: "photos/Sweet Balance Bow.jpeg.jpg", width: 232, height: 217 },
+      { name: "Golden Omelet Fix", price: 55, image: "photos/Golden Omelet Fix.jpeg.jpg", width: 225, height: 225 }
+    ],
+    lunch: [
+      { name: "Steady Fuel Wrap", price: 85, image: "photos/Steady Fuel Wrap.jpeg.jpg", width: 225, height: 225 },
+      { name: "Protein Pulse Plate", price: 90, image: "photos/Protein Pulse Plate.jpeg.jpg", width: 194, height: 259 }
+    ],
+    dinner: [
+      { name: "Evening GlycoGrill", price: 120, image: "photos/Evening GlycoGrill.jpeg.jpg", width: 275, height: 183 },
+      { name: "Root & Roast Medley", price: 95, image: "photos/Root & Roast Medley.jpeg.jpg", width: 225, height: 225 }
+    ],
+    snacks: [
+      { name: "CrunchGuard Cups", price: 35, image: "photos/CrunchGuard Cups.jpeg.jpg", width: 275, height: 183 },
+      { name: "Nutri Nibble Mix", price: 40, image: "photos/Nutri Nibble Mix.jpeg.jpg", width: 232, height: 217 }
+    ],
+    desserts: [
+      { name: "Greek Yogurt", price: 50, image: "photos/Greek%20Yogurt.jpeg.jpg", width: 225, height: 225 },
+      { name: "Cinnamon Apple Bake", price: 45, image: "photos/Cinnamon Apple Bake.jpeg.jpg", width: 225, height: 225 }
+    ]
+  },
+  weightloss: {
+    breakfast: [
+      { name: "Slim Sunrise Scramble", price: 50, image: "photos/Slim Sunrise Scramble.jpeg.jpg", width: 232, height: 217 },
+      { name: "Fresh Start Toast", price: 45, image: "photos/Fresh Start Toast.jpeg.jpg", width: 225, height: 225 }
+    ],
+    lunch: [
+      { name: "Lean Power Bowl", price: 85, image: "photos/Lean Power Bowl.jpeg.jpg", width: 194, height: 259 },
+      { name: "Zoodle Zen Toss", price: 75, image: "photos/Zoodle Zen Toss.jpeg.jpg", width: 225, height: 225 }
+    ],
+    dinner: [
+      { name: "Portion Perfect Plate", price: 90, image: "photos/Portion Perfect Plate.jpeg.jpg", width: 275, height: 183 },
+      { name: "PowerLite Stir Bowl", price: 85, image: "photos/PowerLite Stir Bowl.jpeg.jpg", width: 225, height: 225 }
+    ],
+    snacks: [
+      { name: "SnackLite Munchers", price: 35, image: "photos/SnackLite Munchers.jpeg.jpg", width: 275, height: 183 },
+      { name: "Fit Fuel Jar", price: 45, image: "photos/Fit Fuel Jar.jpeg.jpg", width: 194, height: 259 }
+    ],
+    desserts: [
+      { name: "Guilt-Free Fudge Bite", price: 80, image: "photos/Guilt-Free Fudge Bite.jpeg.jpg", width: 225, height: 225 },
+      { name: "Chia Seed Pudding", price: 75, image: "photos/Chia Seed Pudding.jpeg.jpg", width: 232, height: 217 }
+    ]
+  },
+  hearthealth: {
+    breakfast: [
+      { name: "Cardio Start Bowl", price: 65, image: "photos/Cardio Start Bowl.jpeg.jpg", width: 232, height: 217 },
+      { name: "Morning Med Toast", price: 50, image: "photos/Morning Med Toast.jpeg.jpg", width: 225, height: 225 }
+    ],
+    lunch: [
+      { name: "Omega Wrap Fix", price: 95, image: "photos/Omega Wrap Fix.jpeg.jpg", width: 194, height: 259 },
+      { name: "Power Pulse Salad", price: 85, image: "photos/Power Pulse Salad.jpeg.jpg", width: 225, height: 225 }
+    ],
+    dinner: [
+      { name: "HeartFuel Stir-Fry", price: 95, image: "photos/HeartFuel Stir-Fry.jpeg.jpg", width: 275, height: 183 },
+      { name: "Artery Guard Plate", price: 130, image: "photos/Artery Guard Plate.jpeg.jpg", width: 194, height: 259 }
+    ],
+    snacks: [
+      { name: "Walnut Glow Bites", price: 45, image: "photos/Walnut Glow Bites.jpeg.jpg", width: 275, height: 183 },
+      { name: "Vital Vibe Sticks", price: 40, image: "photos/Vital Vibe Sticks.jpeg.jpg", width: 232, height: 217 }
+    ],
+    desserts: [
+      { name: "Berry Sorbet", price: 75, image: "photos/Berry Sorbet.jpeg.jpg", width: 225, height: 225 },
+      { name: "Breeze Berry Yogurt", price: 50, image: "photos/Breeze Berry Yogurt.jpeg.jpg", width: 232, height: 217 }
+    ]
+  },
+  general: {
+    breakfast: [
+      { name: "Glow Up Oats", price: 60, image: "photos/Glow Up Oats.jpeg.jpg", width: 232, height: 217 },
+      { name: "Smart Fuel Toast", price: 50, image: "photos/Smart Fuel Toast.jpeg.jpg", width: 225, height: 225 }
+    ],
+    lunch: [
+      { name: "Vitality Veggie Wrap", price: 70, image: "photos/Vitality Veggie Wrap.jpeg.jpg", width: 194, height: 259 },
+      { name: "Balanced Rainbow Bowl", price: 85, image: "photos/Balanced Rainbow Bowl.jpeg.jpg", width: 225, height: 225 }
+    ],
+    dinner: [
+      { name: "Harmony Stew Bowl", price: 90, image: "photos/Harmony Stew Bowl.jpeg.jpg", width: 275, height: 183 },
+      { name: "Calm Curry Delight", price: 95, image: "photos/Calm Curry Delight.jpeg.jpg", width: 194, height: 259 }
+    ],
+    snacks: [
+      { name: "Mini Energy Balls", price: 40, image: "photos/Mini Energy Balls.jpeg.jpg", width: 275, height: 183 },
+      { name: "Zest Munch Mix", price: 35, image: "photos/Zest Munch Mix.jpeg.jpg", width: 225, height: 225 }
+    ],
+    desserts: [
+      { name: "Feel-Good Fruit Mix", price: 45, image: "photos/Feel-Good Fruit Mix.jpeg.jpg", width: 225, height: 225 },
+      { name: "Yogurt Calm Cup", price: 50, image: "photos/Yogurt Calm Cup.jpeg.jpg", width: 232, height: 217 }
+    ]
+  },
+  bodybuilders: {
+    breakfast: [
+      { name: "Protein Power Pancakes", price: 70, image: "photos/Protein Power Pancakes.jpeg.jpg", width: 232, height: 217 },
+      { name: "Muscle Fuel Scramble", price: 75, image: "photos/Muscle Fuel Scramble.jpeg.jpg", width: 225, height: 225 }
+    ],
+    lunch: [
+      { name: "Beef Bulk Bowl", price: 110, image: "photos/Beef Bulk Bowl.jpeg.jpg", width: 225, height: 225 },
+      { name: "Chicken Quinoa Stack", price: 100, image: "photos/Chicken Quinoa Stack.jpeg.jpg", width: 194, height: 259 }
+    ],
+    dinner: [
+      { name: "Salmon Strength Plate", price: 125, image: "photos/Salmon Strength Plate.jpeg.jpg", width: 275, height: 183 },
+      { name: "Tofu Protein Stir-Fry", price: 95, image: "photos/Tofu Protein Stir-Fry.jpeg.jpg", width: 194, height: 259 }
+    ],
+    snacks: [
+      { name: "Muscle Munch Mix", price: 50, image: "photos/Muscle Munch Mix.jpeg.jpg", width: 275, height: 183 },
+      { name: "Greek Power Cup", price: 60, image: "photos/Greek Power Cup.jpeg.jpg", width: 225, height: 225 }
+    ],
+    desserts: [
+      { name: "Protein Brownie Bite", price: 55, image: "photos/Protein Brownie Bite.jpeg.jpg", width: 225, height: 225 },
+      { name: "Peanut Butter Energy Bar", price: 50, image: "photos/Peanut Butter Energy Bar.jpeg.jpg", width: 232, height: 217 }
+    ]
+  },
+  vegetarian: {
+    breakfast: [
+      { name: "Berry Patch Yogurt", price: 55, image: "photos/Berry Patch Yogurt.jpeg.jpg", width: 232, height: 217 },
+      { name: "Sunrise Egg Cups", price: 50, image: "photos/Sunrise Egg Cups.jpeg.jpg", width: 225, height: 225 }
+    ],
+    lunch: [
+      { name: "Paneer Power Bowl", price: 90, image: "photos/Paneer Power Bowl.jpeg.jpg", width: 225, height: 225 },
+      { name: "Veggie Stack Sandwich", price: 75, image: "photos/Veggie Stack Sandwich.jpeg.jpg", width: 194, height: 259 }
+    ],
+    dinner: [
+      { name: "Eggplant Delight Bake", price: 95, image: "photos/Eggplant Delight Bake.jpeg.jpg", width: 275, height: 183 },
+      { name: "Herb Garden Stir-Fry", price: 85, image: "photos/Herb Garden Stir-Fry.jpeg.jpg", width: 194, height: 259 }
+    ],
+    snacks: [
+      { name: "Fruit Fuel Mix", price: 40, image: "photos/Fruit Fuel Mix.jpeg.jpg", width: 275, height: 183 },
+      { name: "Zing Trail Mix", price: 45, image: "photos/Zing Trail Mix.jpeg.jpg", width: 225, height: 225 }
+    ],
+    desserts: [
+      { name: "Minty Mango Mousse", price: 70, image: "photos/Minty Mango Mousse.jpeg.jpg", width: 225, height: 225 },
+      { name: "Mango Blossom Bars", price: 65, image: "photos/Mango Blossom Bars.jpeg.jpg", width: 232, height: 217 }
+    ]
+  },
+    vegan: {
+    breakfast: [
+      { name: "Tofu Sunrise Scramble", price: 55, image: "photos/Tofu Sunrise Scramble.jpeg.jpg", width: 232, height: 217 },
+      { name: "Sweet Maple Toast", price: 50, image: "photos/Sweet Maple Toast.jpeg.jpg", width: 225, height: 225 }
+    ],
+    lunch: [
+      { name: "Root Bowl Delight", price: 85, image: "photos/Root Bowl Delight.jpeg.jpg", width: 225, height: 225 },
+      { name: "PlantJoy Wrap", price: 80, image: "photos/PlantJoy Wrap.jpeg.jpg", width: 194, height: 259 }
+    ],
+    dinner: [
+      { name: "Earth Stew Mix", price: 90, image: "photos/Earth Stew Mix.jpeg.jpg", width: 275, height: 183 },
+      { name: "Herb Harmony Plate", price: 95, image: "photos/Herb Harmony Plate.jpeg.jpg", width: 194, height: 259 }
+    ],
+    snacks: [
+      { name: "Crunch & Hummus Box", price: 40, image: "photos/Crunch & Hummus Box.jpeg.jpg", width: 275, height: 183 },
+      { name: "Zesty Chickpea Salad", price: 50, image: "photos/Zesty Chickpea Salad.jpeg.jpg", width: 225, height: 225 }
+    ],
+    desserts: [
+      { name: "Baked Banana Boat", price: 45, image: "photos/Baked Banana Boat.jpeg.jpg", width: 225, height: 225 },
+      { name: "Cocoa Zen Bites", price: 55, image: "photos/Cocoa Zen Bites.jpeg.jpg", width: 232, height: 217 }
+    ]
+  },
+      hypertension: {
+    breakfast: [
+      { name: "Low-Salt Sunrise", price: 50, image: "photos/Low-Salt Sunrise.jpeg.jpg", width: 232, height: 217 },
+      { name: "Berry Heartlight Bowl", price: 60, image: "photos/Berry Heartlight Bowl.jpeg.jpg", width: 225, height: 225 }
+    ],
+    lunch: [
+      { name: "Pulse Perfect Plate", price: 85, image: "photos/Pulse Perfect Plate.jpeg.jpg", width: 225, height: 225 },
+      { name: "Beet Breeze Wrap", price: 80, image: "photos/Beet Breeze Wrap.jpeg.jpg", width: 194, height: 259 }
+    ],
+    dinner: [
+      { name: "Zen Grilled Chicken", price: 115, image: "photos/Zen Grilled Chicken.jpeg.jpg", width: 275, height: 183 },
+      { name: "Omega Zen Stir-Fry", price: 95, image: "photos/Omega Zen Stir-Fry.jpeg.jpg", width: 194, height: 259 }
+    ],
+    snacks: [
+      { name: "Crunch Calm Pack", price: 40, image: "photos/Crunch Calm Pack.jpeg.jpg", width: 275, height: 183 },
+      { name: "Olive Munch Medley", price: 45, image: "photos/Olive Munch Medley.jpeg.jpg", width: 225, height: 225 }
+    ],
+    desserts: [
+      { name: "Cinna-Pear Crisp", price: 50, image: "photos/Cinna-Pear Crisp.jpeg.jpg", width: 225, height: 225 },
+      { name: "Berry Calm Crumble", price: 60, image: "photos/Berry Calm Crumble.jpeg.jpg", width: 232, height: 217 }
+    ]
+  }
+};
+
+
+// Function to update meals based on selected disease
+function updateMealsByDisease() {
+  const selectedDisease = document.getElementById('disease-dropdown').value;
+  const meals = mealsByDisease[selectedDisease];
+  
+  // Clear existing quantities
+  document.querySelectorAll('.qty-value').forEach(elem => {
+    elem.textContent = "0";
+  });
+  
+  // Update breakfast products
+  updateProductsSection('breakfast-products', meals.breakfast);
+  
+  // Update lunch products
+  updateProductsSection('lunch-products', meals.lunch);
+  
+  // Update dinner products
+  updateProductsSection('dinner-products', meals.dinner);
+
+  // Update snacks products
+  updateProductsSection('snacks-products', meals.snacks);
+  
+  // Update desserts products
+  updateProductsSection('desserts-products', meals.desserts);
+}
+
+// Function to update a products section with new meals
+function updateProductsSection(sectionId, meals) {
+  const section = document.getElementById(sectionId);
+  section.innerHTML = '';
+  
+  meals.forEach(meal => {
+    const productElement = document.createElement('div');
+    productElement.className = 'product';
+    productElement.innerHTML = `
+      <img src="${meal.image}" alt="${meal.name}" style="width: ${meal.width}px; height: ${meal.height}px">
+      <h4>${meal.name}</h4>
+      <div class="price">EGP ${meal.price}</div>
+      <div class="quantity-controls">
+        <button class="dec-btn" onclick="changeQuantityOnPage('${meal.name}', ${meal.price}, -1)">-</button>
+        <span class="qty-value" id="qty-${meal.name}">0</span>
+        <button onclick="changeQuantityOnPage('${meal.name}', ${meal.price}, 1)">+</button>
+      </div>
+      <button onclick="addToCart('${meal.name}', ${meal.price})">Add to Cart</button>
+    `;
+    
+    section.appendChild(productElement);
+  });
+}
+
+</script>
+
+
+</body>
+</html>

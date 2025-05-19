@@ -1,0 +1,351 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EatWell - Our Partners</title>
+  <link rel="stylesheet" href="EatWelll.css">
+  <link rel="shortcut icon" href="photos/logo.jpeg.jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #1c9c52;
+      color: #2c3e50;
+      line-height: 1.6;
+    }
+
+    .partners-intro {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .partners-intro h2 {
+      font-size: 2.5rem;
+      color: #1c9c52;
+      margin-bottom: 1rem;
+    }
+
+    .partners-intro p {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .partner-card {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      text-decoration: none;
+    }
+
+    .partner-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .partner-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .partner-info {
+      padding: 1.5rem;
+    }
+
+    .partner-name {
+      font-weight: bold;
+      font-size: 1.3rem;
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+    }
+
+    .partner-desc {
+      color: #555;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .premier-partner-section {
+      background-color: #1a4a2e;
+      color: white;
+      padding: 3rem;
+      border-radius: 10px;
+      margin: 3rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .premier-partner-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.05) 2px, transparent 2px);
+      background-size: 30px 30px;
+      pointer-events: none;
+    }
+
+    .premier-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: #2ecc71;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .premier-title {
+      font-size: 2.5rem;
+      color: white;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .premier-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .premier-image {
+      flex: 1;
+      min-width: 300px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .premier-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .premier-details {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .premier-features {
+      margin-top: 1.5rem;
+    }
+
+    .premier-feature {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding: 0.8rem;
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 8px;
+    }
+
+    .premier-feature i {
+      margin-right: 1rem;
+      color: #2ecc71;
+      font-size: 1.2rem;
+    }
+
+    .btn-premier {
+      background-color: #2ecc71;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 1.5rem;
+      transition: background-color 0.3s;
+    }
+
+    .btn-premier:hover {
+      background-color: #27ae60;
+    }
+
+    .back-btn {
+      display: block;
+      text-align: center;
+      margin: 2rem auto;
+      background-color: #1c9c52;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      max-width: 200px;
+      transition: background-color 0.3s;
+    }
+
+    .back-btn:hover {
+      background-color: #168f48;
+    }
+
+    /* Video Section Styles */
+    .video-content {
+      text-align: center;
+      padding: 3rem 1rem;
+      background-color: #f4fdf7;
+      margin: 3rem 0;
+      border-radius: 10px;
+    }
+
+    .video-title {
+      font-size: 2rem;
+      color: #1c9c52;
+      margin-bottom: 1.5rem;
+    }
+
+    .video-description {
+      color: #555;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      font-size: 1.1rem;
+    }
+
+    .iframe-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .iframe-wrapper iframe {
+      width: 80%;
+      max-width: 800px;
+      height: 450px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      .premier-content {
+        flex-direction: column;
+      }
+
+      .iframe-wrapper iframe {
+        height: 250px;
+        width: 100%;
+      }
+    }
+    
+        .home-logo {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      z-index: 1000;
+    }
+
+.home-logo img {
+  height: 60px;
+  width: auto;
+  cursor: pointer;
+}
+
+  </style>
+</head>
+<body>
+  <header class="main-header">
+    <h1 class="site-title">EatWell Partners</h1>
+      <a href="index.html" class="home-logo">
+    <img src="photos/logoH.jpeg.jpg" alt="EatWell Logo" width="96" height="75">
+  </a>
+  </header>
+
+  <section style="padding: 2rem 1rem; max-width: 1200px; margin: auto;">
+
+    <div class="video-content">
+      <h2 class="video-title">Our Partnership Story</h2>
+      <p class="video-description">Watch how EatWell collaborates with leading organizations to bring you the best in health and nutrition.</p>
+
+      <div class="iframe-wrapper">
+        <iframe src="https://www.youtube.com/embed/i0LCnpgP1n0" title="EatWell X PFT Partnership" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- Premier Partner Section -->
+    <div class="premier-partner-section">
+      <div class="premier-badge">Premier Partner</div>
+      <h2 class="premier-title">Path to Football Talent (PFT)</h2>
+      <div class="premier-content">
+        <div class="premier-image">
+          <img src="photos/pft3.jpeg.jpg" alt="PFT Football Training">
+        </div>
+        <div class="premier-details">
+          <p>PFT is a revolutionary mobile app designed to give young Egyptian footballers an affordable, all-in-one path from skill building to scout exposure.</p>
+          <div class="premier-features">
+            <div class="premier-feature">
+              <i class="fas fa-graduation-cap"></i>
+              <span>Affordable Skill Development with five progressive training levels for players aged 12-21</span>
+            </div>
+            <div class="premier-feature">
+              <i class="fas fa-video"></i>
+              <span>Talent Marketing Platform to upload highlights and track performance metrics</span>
+            </div>
+            <div class="premier-feature">
+              <i class="fas fa-tags"></i>
+              <span>Subscription at EGP 650/month (up to 83% cheaper than traditional academies)</span>
+            </div>
+          </div>
+          <a href="#" class="btn-premier">Learn More About PFT</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Strategic Partners Grid -->
+    <h2 style="font-size: 2rem; color: #1c9c52; margin-bottom: 1.5rem;">Strategic Partners</h2>
+    <p style="text-align: center; margin-bottom: 2rem; color: #555;">We're proud to work with these organizations who contribute to our ecosystem and help us serve you better.</p>
+
+    <div class="partners-grid">
+      <!-- Gold's Gym -->
+      <a href="https://goldsgymegypt.com/" target="_blank" class="partner-card">
+        <img class="partner-img" src="photos/gold's%20gym.jpeg.jpg" alt="Gold's Gym">
+        <div class="partner-info">
+          <div class="partner-name">Gold's Gym</div>
+          <div class="partner-desc">We're proud to partner with Gold's Gym to support your fitness journey with expert guidance and top facilities.</div>
+        </div>
+      </a>
+
+      <!-- Breadfast -->
+      <a href="https://www.breadfast.com/en/" target="_blank" class="partner-card">
+        <img class="partner-img" src="photos/breadfast.jpeg.jpg" alt="Breadfast">
+        <div class="partner-info">
+          <div class="partner-name">Breadfast</div>
+          <div class="partner-desc">We're proud to partner with Breadfast to bring fresh, nutritious meals right to your door—fueling your wellness journey from the very first bite.</div>
+        </div>
+      </a>
+
+      <!-- Vezeeta -->
+      <a href="https://www.vezeeta.com/en" target="_blank" class="partner-card">
+        <div class="partner-info">
+          <div class="partner-name">
+            <img alt="Vezeeta" src="photos/vezeeta.jpeg.png" width="288" height="142"> Vezeeta
+          </div>
+          <div class="partner-desc">We're proud to partner with Vezeeta to give you easier access to trusted healthcare professionals—because your well-being starts with expert care.</div>
+        </div>
+      </a>
+    </div>
+
+    <a href="index.html" class="back-btn">← Back to Home</a>
+  </section>
+
+  <footer>
+    <p style="text-align: center; padding: 1rem;">&copy; 2025 EatWell. All rights reserved.</p>
+  </footer>
+</body>
+</html>

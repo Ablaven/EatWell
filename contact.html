@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us – EatWell</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="EatWelll.css">
+  <link rel="shortcut icon" href="photos/logo.jpeg.jpg">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1c9c52;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    h1, h2 {
+      color: #1c9c52;
+    }
+
+    p, label {
+      color: #333;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .contact-info {
+      margin-bottom: 30px;
+    }
+
+    .team-contacts {
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+
+    .team-contacts ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .team-contacts li {
+      margin-bottom: 10px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input, textarea {
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #1c9c52;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #168d49;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 10px 20px;
+      background-color: #1c9c52;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .back-btn:hover {
+      background-color: #168d49;
+    }
+    
+    form input, form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+form button {
+  background-color: #1c9c52;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #168d49;
+}
+
+.confirmation {
+  color: #285923;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+  </style>
+</head>
+<body>
+
+<a href="index.html" class="home-logo" style="left: 20px; top: 10px; width: 120px; height: 102px">
+  <img alt="EatWell Logo" src="photos/logoB.jpeg.jpg" width="88" height="83">
+</a>
+
+<div class="container">
+  <h1>Contact Us</h1>
+  
+  <div class="contact-info">
+  <p>If you have any questions, suggestions, or need help, feel free to reach out to any of our branches:</p>
+  <ul>
+    <li><strong>5th Settlement</strong><br>
+      Phone: +20 100 555 1234<br>
+      Address: 90 South Rd., 5th Settlement, New Cairo, Egypt
+    </li><br>
+    <li><strong>Nasr City Branch</strong><br>
+      Phone: +20 101 777 4567<br>
+      Address: 6 Abbas El-Akkad St., Nasr City, Cairo, Egypt
+    </li><br>
+    <li><strong>El Sheikh Zayed</strong><br>
+      Phone: +20 102 888 7890<br>
+      Address: 26 El-Bostan St., Sheikh Zayed, Giza, Egypt
+    </li>
+  </ul>
+</div>
+
+
+  <div class="team-contacts">
+    <h2>Contact Our Team</h2>
+    <ul>
+      <li><strong>Molly Raymond – Project Founder:</strong> molly@eatwell.com</li>
+      <li><strong>Habiba Essam – Website Creator:</strong> habiba@eatwell.com</li>
+      <li><strong>David Fakhry – Designer:</strong> david@eatwell.com</li>
+      <li><strong>Mai Tarek – Marketer:</strong> mai@eatwell.com</li>
+      <li><strong>Lena Magdy – Project Analyst:</strong> lena@eatwell.com</li>
+    </ul>
+  </div>
+
+<div class="feedback-form">
+  <h2>Send Us Feedback</h2>
+  <form id="feedback-form" action="#" method="post">
+    <label for="name">Your Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Your Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="message">Your Message:</label>
+    <textarea id="message" name="message" rows="6" required></textarea>
+
+    <button type="submit">Send Feedback</button>
+  </form>
+  <p id="feedback-confirmation" class="confirmation"></p>
+</div>
+
+  <a href="index.html" class="back-btn">← Back to Home</a>
+</div>
+
+<script>
+  document.getElementById("feedback-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const confirmation = document.getElementById("feedback-confirmation");
+    confirmation.textContent = "✅ Feedback received! You're helping us improve every step of the way.";
+    
+    this.reset(); // Clear the form
+  });
+</script>
+
+
+</body>
+</html>

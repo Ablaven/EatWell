@@ -1,0 +1,287 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EatWell | Health Assessment</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #1c9c52;
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .main-section {
+      width: 100%;
+      max-width: 1000px;
+      padding: 40px 20px;
+    }
+    .assessment-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      background-color: #ffffff;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+    .doctor-profile {
+      text-align: center;
+    }
+    .doctor-img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #2e7d32;
+    }
+    .doctor-name {
+      font-size: 22px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .doctor-title {
+      font-size: 16px;
+      color: #666;
+    }
+    .question-box {
+      background-color: #e3e1dc;
+      border-radius: 12px;
+      padding: 20px 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      width: 100%;
+      transition: opacity 0.6s ease;
+      opacity: 0;
+      display: none;
+    }
+    .question-box.active {
+      display: block;
+      opacity: 1;
+    }
+    .question-box.fade-out {
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .question-box label {
+      font-size: 18px;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .question-box input[type="radio"],
+    .question-box input[type="checkbox"] {
+      margin-right: 8px;
+      margin-bottom: 10px;
+    }
+    .submit-btn {
+      display: none;
+      margin-top: 20px;
+      background-color: #2e7d32;
+      color: white;
+      font-size: 16px;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      float: right;
+    }
+    .submit-btn:hover {
+      background-color: #1b5e20;
+    }
+  </style>
+</head>
+<body>
+
+<div class="main-section">
+  <section class="assessment-section">
+
+    <div class="doctor-profile">
+      <img class="doctor-img" alt="Dr. Mahmoud Fathy" src="photos/Dr. Mahmoud Fathy.jpeg.jpg">
+      <div class="doctor-name">Dr. Mahmoud Fathy</div>
+      <div class="doctor-title">General Practitioner</div>
+    </div>
+
+    <form id="health-form">
+      <!-- Q1 - Q10 -->
+      <div class="question-box active" id="q1">
+        <label>Do you experience any of the following symptoms?</label>
+        <input type="checkbox" name="symptoms" value="frequent-urination" data-condition="diabetes"> Frequent urination<br>
+        <input type="checkbox" name="symptoms" value="chest-pain" data-condition="heart"> Chest pain<br>
+        <input type="checkbox" name="symptoms" value="blurred-vision" data-condition="diabetes"> Blurred vision<br>
+        <input type="checkbox" name="symptoms" value="shortness-breath" data-condition="heart"> Shortness of breath<br>
+        <input type="checkbox" name="symptoms" value="headache" data-condition="hypertension"> Frequent headaches<br>
+        <input type="checkbox" name="symptoms" value="none"> None of the above
+      </div>
+
+      <div class="question-box" id="q2">
+        <label>Do you follow a specific diet?</label>
+        <input type="radio" name="diet" value="vegan" data-condition="vegan"> Vegan<br>
+        <input type="radio" name="diet" value="vegetarian" data-condition="vegetarian"> Vegetarian<br>
+        <input type="radio" name="diet" value="non"> No specific diet
+      </div>
+
+      <div class="question-box" id="q3">
+        <label>What is your main health goal?</label>
+        <input type="radio" name="goal" value="weight-loss" data-condition="weight-loss"> Weight Loss<br>
+        <input type="radio" name="goal" value="muscle-gain" data-condition="bodybuilding"> Muscle Gain<br>
+        <input type="radio" name="goal" value="energy" data-condition="wellness"> Improve Energy<br>
+        <input type="radio" name="goal" value="overall" data-condition="wellness"> General Wellness
+      </div>
+
+      <div class="question-box" id="q4">
+        <label>How often do you exercise per week?</label>
+        <input type="radio" name="exercise" value="none" data-condition="heart"> 0 times<br>
+        <input type="radio" name="exercise" value="1-2"> 1–2 times<br>
+        <input type="radio" name="exercise" value="3-4"> 3–4 times<br>
+        <input type="radio" name="exercise" value="5+" data-condition="diabetes"> 5 or more times
+      </div>
+
+      <div class="question-box" id="q5">
+        <label>Do you frequently feel tired or sluggish throughout the day?</label>
+        <input type="radio" name="tired" value="yes" data-condition="diabetes"> Yes<br>
+        <input type="radio" name="tired" value="no"> No
+      </div>
+
+      <div class="question-box" id="q6">
+        <label>Do you experience frequent headaches or dizziness?</label>
+        <input type="radio" name="headache" value="yes" data-condition="hypertension"> Yes<br>
+        <input type="radio" name="headache" value="no"> No
+      </div>
+
+      <div class="question-box" id="q7">
+        <label>Have you gained or lost a significant amount of weight recently?</label>
+        <input type="radio" name="weightchange" value="yes" data-condition="diabetes"> Yes<br>
+        <input type="radio" name="weightchange" value="no"> No
+      </div>
+
+      <div class="question-box" id="q8">
+        <label>How many hours do you sleep per night on average?</label>
+        <input type="radio" name="sleep" value="less6" data-condition="heart"> Less than 6<br>
+        <input type="radio" name="sleep" value="6-8"> 6–8 hours<br>
+        <input type="radio" name="sleep" value="8plus"> More than 8
+      </div>
+
+      <div class="question-box" id="q9">
+        <label>Have you been feeling anxious or stressed lately?</label>
+        <input type="radio" name="anxiety" value="yes" data-condition="hypertension"> Yes<br>
+        <input type="radio" name="anxiety" value="no"> No
+      </div>
+
+      <div class="question-box" id="q10">
+        <label>Does your family have a history of chronic conditions?</label>
+        <input type="radio" name="familyhistory" value="yes" data-condition="heart"> Yes<br>
+        <input type="radio" name="familyhistory" value="no"> No
+      </div>
+
+      <!-- NEW Q11 -->
+      <div class="question-box" id="q11">
+        <label>How would you describe your daily energy and focus level?</label>
+        <input type="radio" name="energy" value="low" data-condition="diabetes wellness"> Low and sluggish<br>
+        <input type="radio" name="energy" value="moderate" data-condition="wellness"> Moderate<br>
+        <input type="radio" name="energy" value="high" data-condition="bodybuilding wellness"> High and focused<br>
+      </div>
+
+      <!-- NEW Q12 -->
+      <div class="question-box" id="q12">
+        <label>Which of these meals best represents your usual diet?</label>
+        <input type="radio" name="meals" value="plant-based" data-condition="vegan"> Whole grains, legumes, fruits, vegetables<br>
+        <input type="radio" name="meals" value="lacto-veg" data-condition="vegetarian"> Dairy, vegetables, grains<br>
+        <input type="radio" name="meals" value="high-protein" data-condition="bodybuilding"> Eggs, meat, protein shakes<br>
+        <input type="radio" name="meals" value="balanced" data-condition="wellness"> Balanced meals with carbs, protein, and fats<br>
+      </div>
+
+      <!-- NEW Q13 -->
+      <div class="question-box" id="q13">
+        <label>What are you most concerned about regarding your body?</label>
+        <input type="radio" name="bodyconcern" value="high-weight" data-condition="weight-loss diabetes"> Gaining weight<br>
+        <input type="radio" name="bodyconcern" value="low-weight" data-condition="bodybuilding"> Difficulty building muscle<br>
+        <input type="radio" name="bodyconcern" value="bp-cholesterol" data-condition="hypertension heart"> Blood pressure or cholesterol<br>
+        <input type="radio" name="bodyconcern" value="none" data-condition="wellness"> No specific concern<br>
+      </div>
+
+      <!-- NEW Q14 -->
+      <div class="question-box" id="q14">
+        <label>Which daily habit do you follow most consistently?</label>
+        <input type="radio" name="habit" value="meditation" data-condition="wellness hypertension"> Meditation or mindfulness<br>
+        <input type="radio" name="habit" value="gym" data-condition="bodybuilding wellness"> Gym or strength training<br>
+        <input type="radio" name="habit" value="cardio" data-condition="heart weight-loss"> Daily walking or cardio<br>
+        <input type="radio" name="habit" value="none" data-condition="diabetes"> I don’t follow any specific habit<br>
+      </div>
+
+      <div style="width: 100%; text-align: right;">
+        <button type="submit" class="submit-btn" id="submit-btn">Submit Assessment</button>
+      </div>
+    </form>
+  </section>
+</div>
+
+<script>
+  const questions = document.querySelectorAll('.question-box');
+  const submitBtn = document.getElementById('submit-btn');
+  let current = 0;
+
+  function goToNextQuestion() {
+    const currentQ = questions[current];
+    currentQ.classList.remove('active');
+    currentQ.classList.add('fade-out');
+
+    setTimeout(() => {
+      currentQ.style.display = 'none';
+      current++;
+      if (current < questions.length) {
+        questions[current].classList.remove('fade-out');
+        questions[current].classList.add('active');
+      } else {
+        submitBtn.style.display = 'inline-block';
+      }
+    }, 500);
+  }
+
+  function setupRevealLogic() {
+    questions.forEach((question, index) => {
+      const inputs = question.querySelectorAll('input');
+      inputs.forEach(input => {
+        input.addEventListener('change', () => {
+          if (index === current) {
+            goToNextQuestion();
+          }
+        });
+      });
+    });
+  }
+
+  setupRevealLogic();
+
+  document.getElementById('health-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const allInputs = document.querySelectorAll('input:checked');
+    const conditionCount = {
+      diabetes: 0, 'weight-loss': 0, heart: 0, wellness: 0,
+      bodybuilding: 0, vegan: 0, vegetarian: 0, hypertension: 0
+    };
+
+    allInputs.forEach(input => {
+      const data = input.getAttribute('data-condition');
+      if (data) {
+        data.split(' ').forEach(cond => {
+          if (conditionCount[cond] !== undefined) {
+            conditionCount[cond]++;
+          }
+        });
+      }
+    });
+
+    const maxCondition = Object.keys(conditionCount).reduce((a, b) => conditionCount[a] >= conditionCount[b] ? a : b);
+    window.location.href = `doctors/${maxCondition}.html`;
+  });
+</script>
+
+</body>
+</html>
